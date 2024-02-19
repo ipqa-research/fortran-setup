@@ -9,25 +9,12 @@ setup_oneapi() {
 }
 
 setup_fortran_project(){
+    echo "Setting up fortran_project script..."
     mkdir -p ~/.local/bin
-    echo '#!/bin/bash
-# ~/.local/bin/fortran_project.sh
-
-
-nombre=$1  # Primer argumento
-
-# Crea una carpeta 
-fpm new "$nombre"
-
-# Ir a la nueva carpeta
-cd "$nombre"
-
-# Añade configuraciones generales de vscode al proyecto
-git submodule add "https://github.com/ipqa-research/vscode-fortran.git" .vscode
-' > ~/.local/bin/fortran_project
+    script="$(curl https://raw.githubusercontent.com/ipqa-research/fortran-setup/main/fortran_project)"
+    echo "$script" > ~/.local/bin/fortran_project
     chmod +x ~/.local/bin/fortran_project
 }
-
 
 install_packages() {
     # Setup oneapi servers
@@ -50,7 +37,7 @@ install_packages() {
     # Install fortran language server, fprettify and flinter
     packages=( fortls findent flinter ford fpm )
     for package in ${packages[@]}; do
-        pipx install $package
+        pipx install $package --force
     done
 }
 

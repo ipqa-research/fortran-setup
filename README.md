@@ -2,6 +2,15 @@
 Setup your system to use Fortran. For now, this script assumes that you're using
 a Ubuntu-based system.
 
+## How to run it?
+
+just do
+
+```bash
+wget https://raw.githubusercontent.com/ipqa-research/fortran-setup/main/bootstrap_fortran.sh
+bash bootstrap_fortran.sh
+```
+
 ## What does it do exactly?
 
 Installs:
