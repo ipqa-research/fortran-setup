@@ -11,7 +11,7 @@ wget https://raw.githubusercontent.com/ipqa-research/fortran-setup/main/bootstra
 bash bootstrap_fortran.sh
 ```
 
-## What does it do exactly?
+## What does it do?
 
 Installs:
 
@@ -28,3 +28,22 @@ Installs:
     - ford: To documentate your code.
     - fortls: To work with an editor.
     - fortran_project: Script to generate and open your projects.
+
+# The `fortran_project` script
+The main script installs the `fortran_project` command in your `~/.local/bin`
+directory, making it available to run at any place in the terminal.
+
+`fortran_project` is a command that eases your projects organization. It has
+three fundamental uses:
+
+- `fortran_project new <project_name>`
+> Create a new project.
+> The default folder will be at ~/codes, but it can be set up with
+> the environment variable FORTRAN_PROJECTS.
+> If the directory doesn't exist, it will be created.
+
+- `fortran_project list`
+> List all the existing Fortran projects.
+
+- `fortran_project work`
+> Open vscode on the selected project directory.
