@@ -1,0 +1,52 @@
+#!/bin/bash
+# ~/.local/bin/fortran_project.sh
+
+WORK_DIR="${FORTRAN_PROJECTS:-$HOME/codes}"
+
+[ -d "$WORK_DIR" ] || mkdir -p "$WORK_DIR"
+
+h="fortran_project <new|list|work>
+
+Manage your Fortran based projects locally with fpm and vscode.
+
+USAGE:
+    - fortran_project new <project_name>
+        Create a new project.
+        The default folder will be at ~/codes, but it can be set up with
+        the environment variable FORTRAN_PROJECTS.
+        If the directory doesn't exist, it will be created.
+
+    - fortran_project list
+        List all the existing Fortran projects.
+    
+    - fortran_project work
+        Open vscode on the selected project directory.
+"
+
+case $1 in
+    "new")
+        if [ -z $2 ]; then
+            echo "ERROR!"
+            echo "Project name must be provided!"
+            exit 1
+        fi
+
+        cd "$WORK_DIR"
+
+        nombre=$2  # Primer argumento
+        fpm new "$nombre" --full
+
+        cd "$nombre"
+        # Añade configuraciones generales de vscode al proyecto
+        git submodule add "https://github.com/ipqa-research/vscode-fortran.git" .vscode
+        ;;
+    "list")
+        ls $WORK_DIR;;
+    "work")
+        proj="$(ls $WORK_DIR | fzf)"
+        [ "$proj" = "" ] || code "$WORK_DIR/$proj"
+        ;;
+    *)
+        echo "$h"
+        ;;
+esac
