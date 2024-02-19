@@ -6,6 +6,9 @@ setup_oneapi() {
 
     echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" \
     | sudo tee /etc/apt/sources.list.d/oneAPI.list
+
+    sudo apt update
+    sudo apt install intel-basekit intel-hpckit
 }
 
 setup_fortran_project(){
@@ -17,13 +20,6 @@ setup_fortran_project(){
 }
 
 install_packages() {
-    # Setup oneapi servers
-    echo ""
-    echo "Incluir intel oneAPI? [y/n] -> Puede demorar bastante"
-
-    read input
-    [ "$input" = "y" ] && setup_oneapi
-
     # Update apt repositories
     sudo apt update && sudo apt upgrade
 
@@ -39,6 +35,19 @@ install_packages() {
     for package in ${packages[@]}; do
         pipx install $package --force
     done
+}
+
+
+ask_yn() {
+    echo "$1 [y/n]"
+    read var
+    [ $var = "y" ]
+}
+
+setup_all() {
+    setup_fortran_project
+    setup_oneapi
+    install_packages
 }
 
 echo "
@@ -57,11 +66,10 @@ Este script instalará:
     - script generador de proyecto fortran `fortran_project`
 "
 
-setup_fortran_project
-
-echo "
-Desea continuar? [y/n]
-"
-read input
-
-[ "$input" = "y" ] && install_packages
+if ask_yn "Instalar todo"; then
+    setup_all
+else
+    ask_yn "Instalar oneAPI" && setup_oneapi
+    ask_yn "Instalar herramientas" && install_packages
+    ask_yn "Instalar fortran_project" && setup_fortran_project
+fi
