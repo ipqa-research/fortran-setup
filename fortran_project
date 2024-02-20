@@ -25,6 +25,9 @@ USAGE:
     
     - fortran_project ${bold}work${normal}
         Open vscode on the selected project directory.
+
+    - fortran_project ${bold}update${normal}
+        Update the fortran_project script
 "
 
 case $1 in
@@ -50,6 +53,11 @@ case $1 in
         proj="$(ls $WORK_DIR | fzf)"
         cd "$WORK_DIR/$proj"
         [ "$proj" = "" ] || code "$WORK_DIR/$proj"
+        ;;
+    "update")
+        script="$(curl https://raw.githubusercontent.com/ipqa-research/fortran-setup/main/fortran_project)"
+        echo "$script" > ~/.local/bin/fortran_project
+        chmod +x ~/.local/bin/fortran_project
         ;;
     *)
         echo "$h"
