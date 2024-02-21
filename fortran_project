@@ -96,7 +96,8 @@ case $1 in
         write_ford_file "$nombre"
         ;;
     "list")
-        ls $WORK_DIR;;
+        ls $WORK_DIR
+        ;;
     "work")
         proj="$(ls $WORK_DIR | fzf)"
         cd "$WORK_DIR/$proj"
@@ -106,6 +107,7 @@ case $1 in
         script="$(curl https://raw.githubusercontent.com/ipqa-research/fortran-setup/main/fortran_project)"
         echo "$script" > ~/.local/bin/fortran_project
         chmod +x ~/.local/bin/fortran_project
+        exit
         ;;
     "docs")
         ford ford.md
