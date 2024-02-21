@@ -9,6 +9,12 @@ WORK_DIR="${FORTRAN_PROJECTS:-$HOME/codes}"
 
 [ -d "$WORK_DIR" ] || mkdir -p "$WORK_DIR"
 
+write_gen_gitignore() {
+    echo "build" > .gitignore
+    echo "*.mod" > .gitignore
+    echo "doc/ford_site" > .gitignore
+}
+
 write_ford_file() {
     mkdir -p doc/page
     mkdir -p doc/media
