@@ -80,7 +80,7 @@ case $1 in
         cd "$WORK_DIR"
 
         nombre="$2"
-        fpm new "$nombre" &&
+        fpm new "$nombre" --app --src --example --test &&
 
         cd "$nombre" &&
         # Añade configuraciones generales de vscode al proyecto
@@ -101,7 +101,7 @@ case $1 in
         chmod +x ~/.local/bin/fortran_project
         ;;
     "docs")
-        ford docs.md
+        ford ford.md
         ;;
     *)
         echo "$h"
