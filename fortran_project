@@ -13,13 +13,13 @@ write_ford_file() {
     mkdir -p doc/page
     mkdir -p doc/media
 echo "---
-project: "<Project name>"
-summary: "<Project description>"
-project_github: "<Project github page>"
-author: "<Main Author>"
-author_description: "<Description of author>"
-email: "<author email>"
-github: "<author github>"
+project: '<Project name>'
+summary: '<Project description>'
+project_github: '<Project github page>'
+author: '<Main Author>'
+author_description: '<Description of author>'
+email: '<author email>'
+github: '<author github>'
 src_dir: src
 exclude_dir: test doc example
 output_dir: doc/ford_site
