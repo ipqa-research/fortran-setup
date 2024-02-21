@@ -67,7 +67,7 @@ USAGE:
         The default folder will be at ~/codes, but it can be set up with
         the environment variable FORTRAN_PROJECTS.
         If the directory doesn't exist, it will be created.
-        The project is generated with `fpm` and, besides the general setting,
+        The project is generated with \`fpm\` and, besides the general setting,
         includes a Ford documentation tempalte, a .gitignore file and
         some vscode settings.
 
