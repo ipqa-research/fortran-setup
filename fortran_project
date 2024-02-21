@@ -41,7 +41,7 @@ case $1 in
         cd "$WORK_DIR"
 
         nombre=$2  # Primer argumento
-        fpm new "$nombre" --full
+        fpm new "$nombre"
 
         cd "$nombre"
         # Añade configuraciones generales de vscode al proyecto
