@@ -51,7 +51,11 @@ three fundamental uses:
 - `fortran_project work`
 > Open vscode on the selected project directory.
 
+- `fortran_project update`
+> Update `fortran_project`
+
 ### Install only `fortran_project`
+If you only want to install the `fortran_project` script run:
 ```bash
 script="$(curl https://raw.githubusercontent.com/ipqa-research/fortran-setup/main/fortran_project)"
 echo "$script" > ~/.local/bin/fortran_project
