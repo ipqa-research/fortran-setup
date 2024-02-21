@@ -83,11 +83,9 @@ case $1 in
 
         nombre="$2"
         fpm new "$nombre" --app --src --example --test &&
-
         cd "$nombre" &&
         # Añade configuraciones generales de vscode al proyecto
-        git submodule add "https://github.com/ipqa-research/vscode-fortran.git" .vscode
-
+        git submodule add "https://github.com/ipqa-research/vscode-fortran.git" .vscode &&
         write_ford_file "$nombre"
         ;;
     "list")
