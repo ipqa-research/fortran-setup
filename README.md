@@ -50,3 +50,10 @@ three fundamental uses:
 
 - `fortran_project work`
 > Open vscode on the selected project directory.
+
+### Install only `fortran_project`
+```bash
+script="$(curl https://raw.githubusercontent.com/ipqa-research/fortran-setup/main/fortran_project)"
+echo "$script" > ~/.local/bin/fortran_project
+chmod +x ~/.local/bin/fortran_project
+```
