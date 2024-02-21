@@ -31,7 +31,7 @@ install_packages() {
         fzf
 
     # Install fortran language server, fprettify and flinter
-    packages=( fortls findent flinter ford fpm )
+    packages=( fortls findent flinter ford fpm fypp )
     for package in ${packages[@]}; do
         pipx install $package --force
     done
