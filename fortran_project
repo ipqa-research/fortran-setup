@@ -63,9 +63,13 @@ Manage your Fortran based projects locally with fpm and vscode.
 USAGE:
     - fortran_project ${bold}new${normal} <project_name>
         Create a new project.
+
         The default folder will be at ~/codes, but it can be set up with
         the environment variable FORTRAN_PROJECTS.
         If the directory doesn't exist, it will be created.
+        The project is generated with `fpm` and, besides the general setting,
+        includes a Ford documentation tempalte, a .gitignore file and
+        some vscode settings.
 
     - fortran_project ${bold}list${normal}
         List all the existing Fortran projects.
@@ -75,6 +79,9 @@ USAGE:
 
     - fortran_project ${bold}update${normal}
         Update the fortran_project script
+    
+    - fortran_project ${bold}docs${normal}
+        Generate Ford documentation.
 "
 
 case $1 in
