@@ -56,7 +56,7 @@ media_dir: doc/media
 }
 
 
-h="fortran_project <new|list|work|update>
+h="fortran_project <new|list|work|update|docs>
 
 Manage your Fortran based projects locally with fpm and vscode.
 
