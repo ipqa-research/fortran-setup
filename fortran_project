@@ -11,14 +11,14 @@ WORK_DIR="${FORTRAN_PROJECTS:-$HOME/codes}"
 
 write_gitignore() {
     echo "build" > .gitignore
-    echo "*.mod" > .gitignore
-    echo "doc/ford_site" > .gitignore
+    echo "*.mod" >> .gitignore
+    echo "doc/ford_site" >> .gitignore
 }
 
 write_ford_file() {
     mkdir -p doc/page
     mkdir -p doc/media
-echo "---
+    echo "---
 project: '<Project name>'
 summary: '<Project description>'
 project_github: '<Project github page>'
