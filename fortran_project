@@ -32,7 +32,7 @@ USAGE:
 
 case $1 in
     "new")
-        if [ -z $2 ]; then
+        if [ -z "$2" ]; then
             echo "ERROR!"
             echo "Project name must be provided!"
             exit 1
@@ -40,10 +40,10 @@ case $1 in
 
         cd "$WORK_DIR"
 
-        nombre=$2  # Primer argumento
-        fpm new "$nombre"
+        nombre="$2"
+        fpm new "$nombre" &&
 
-        cd "$nombre"
+        cd "$nombre" &&
         # Añade configuraciones generales de vscode al proyecto
         git submodule add "https://github.com/ipqa-research/vscode-fortran.git" .vscode
         ;;
