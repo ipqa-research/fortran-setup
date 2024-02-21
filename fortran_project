@@ -10,19 +10,18 @@ WORK_DIR="${FORTRAN_PROJECTS:-$HOME/codes}"
 [ -d "$WORK_DIR" ] || mkdir -p "$WORK_DIR"
 
 write_ford_file() {
+    mkdir -p doc/page
+    mkdir -p doc/media
 echo "---
-project: yaeos
-summary: Calculation of thermodynamic properties and phase-equilibria with
-         Equation of State. Keeping high performance with the power of Fortran
-         and the possiblity of using either automatic differentiation and
-         anallytical derivatives.
-project_github: https://github.com/fedebenelli/yaeos
-author: Federico Benelli
-author_description: PhD student with focus on reservoir PVT simulation.
-email: federico.benelli@mi.unc.edu.ar
-github: https://github.com/fedebenelli
+project: "<Project name>"
+summary: "<Project description>"
+project_github: "<Project github page>"
+author: "<Main Author>"
+author_description: "<Description of author>"
+email: "<author email>"
+github: "<author github>"
 src_dir: src
-exclude_dir: test doc
+exclude_dir: test doc example
 output_dir: doc/ford_site
 preprocessor: gfortran -E
 display: public
