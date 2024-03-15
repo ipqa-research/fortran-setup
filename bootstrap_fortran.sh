@@ -51,25 +51,25 @@ setup_all() {
 }
 
 echo "
-Bootstrap de software necesario para correr códigos Fortran en Linux
+Software Bootstrap necessary to run Fortran code on Linux
 
-Este script instalará:
-- Las librerías matemáticas (LAPACK) para resolver sistemas lineales
-- Compilador y debuggeador gfortran
-- OPCIONAL: intel OneAPI HPC Toolkit (compiladores de intel, pesa como 10GB)
-- Herramientas de desarollo:
-    - pipx: gestor de programas Python
-    - fortls: Para mostrar errores y syntaxis Fortran
-    - findent: Para formatear código (ordenar indentaciones)
-    - flinter: Para hacer análisis de código
-    - fpm: Gestor de paquetes de código, para generar y correr proyectos
-    - script generador de proyecto fortran `fortran_project`
+This script will install:
+- Mathematical libraries (LAPACK) for solving linear systems
+- Compiler and debugger gfortran
+- OPTIONAL: Intel OneAPI HPC Toolkit (Intel compilers, weighs about 10GB)
+- Development tools:
+    - pipx: Python program manager
+    - fortls: To display errors and Fortran syntax
+    - findent: To format code (order indentations)
+    - flinter: To perform code analysis
+    - fpm: Code package manager, for generating and running projects
+    - Fortran project generator script fortran_project
 "
 
-if ask_yn "Instalar todo"; then
+if ask_yn "Install everyhing?"; then
     setup_all
 else
-    ask_yn "Instalar oneAPI" && setup_oneapi
-    ask_yn "Instalar herramientas" && install_packages
-    ask_yn "Instalar fortran_project" && setup_fortran_project
+    ask_yn "Install oneAPI" && setup_oneapi
+    ask_yn "Install tools?" && install_packages
+    ask_yn "Install fortran_project" && setup_fortran_project
 fi

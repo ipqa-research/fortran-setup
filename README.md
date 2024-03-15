@@ -28,7 +28,7 @@ Installs:
     - fpm: To manage your project.
     - findent: To make your code look decent.
     - flinter: To analyze your project.
-    - ford: To documentate your code.
+    - ford: To document your code.
     - fortls: To work with an editor.
     - fortran_project: Script to generate and open your projects.
 
