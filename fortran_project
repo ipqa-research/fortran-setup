@@ -98,7 +98,7 @@ case $1 in
         fpm new "$nombre" --app --src --example --test &&
         cd "$nombre" &&
         # Añade configuraciones generales de vscode al proyecto
-        git submodule add "https://github.com/ipqa-research/vscode-fortran.git" .vscode &&
+        git clone "https://github.com/ipqa-research/vscode-fortran.git" .vscode &&
         write_gitignore &&
         write_ford_file "$nombre"
         ;;
