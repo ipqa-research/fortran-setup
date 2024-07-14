@@ -1,14 +1,29 @@
 #!/bin/bash
 # ~/.local/bin/fortran_project.sh
+#
+VERSION="0.1"
+MY_URL="https://raw.githubusercontent.com/ipqa-research/fortran-setup/main/fortran_project"
 
 
 bold=$(tput bold)
 normal=$(tput sgr0)
 
+RED='\033[0;31m'
+NC='\033[0m'
+
 WORK_DIR="${FORTRAN_PROJECTS:-$HOME/codes}"
 PFX=~/.local/bin
 
 [ -d "$WORK_DIR" ] || mkdir -p "$WORK_DIR"
+
+update_script() {
+    echo "updating..."
+    tmpfile=$(mktemp)
+    script="$(curl -s $MY_URL)"
+    echo "$script" > "$tmpfile"
+    chmod +x "$tmpfile"
+    exec mv "$tmpfile" "$PFX/fortran_project"
+}
 
 write_gitignore() {
     echo "build" > .gitignore
@@ -112,19 +127,16 @@ case $1 in
         [ "$proj" = "" ] || code "$WORK_DIR/$proj"
         ;;
     "update")
-        script="$(curl https://raw.githubusercontent.com/ipqa-research/fortran-setup/main/fortran_project)"
-        echo "$script" > ~/.local/bin/fortran_project
-        chmod +x "$PFX/fortran_project"
-        exit
+        update_script
         ;;
     "docs")
         ford ford.md
         ;;
     *)
         echo "$h"
-        script="$(curl https://raw.githubusercontent.com/ipqa-research/fortran-setup/main/fortran_project)"
-        if [ "$script" = "$(cat $PFX/fortran_project)" ]; then
-            echo "fortran_project should be updated. Run:"
+        script="$(curl --no-progress-meter $MY_URL)"
+        if [ "$script" != "$(cat $PFX/fortran_project)" ]; then
+            echo -e "${RED} There is a newer version of fortran_project on line, it should be updated ${NC}. Run:"
             echo "fortran_project update"
         fi
         ;;
