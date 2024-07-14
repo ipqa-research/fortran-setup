@@ -6,6 +6,7 @@ bold=$(tput bold)
 normal=$(tput sgr0)
 
 WORK_DIR="${FORTRAN_PROJECTS:-$HOME/codes}"
+PFX=~/.local/bin
 
 [ -d "$WORK_DIR" ] || mkdir -p "$WORK_DIR"
 
@@ -121,5 +122,10 @@ case $1 in
         ;;
     *)
         echo "$h"
+        script="$(curl https://raw.githubusercontent.com/ipqa-research/fortran-setup/main/fortran_project)"
+        if [ "$script" = "$(cat $PFX/fortran_project)" ]; then
+            echo "fortran_project should be updated. Run:"
+            echo "fortran_project update"
+        fi
         ;;
 esac
