@@ -114,7 +114,7 @@ case $1 in
     "update")
         script="$(curl https://raw.githubusercontent.com/ipqa-research/fortran-setup/main/fortran_project)"
         echo "$script" > ~/.local/bin/fortran_project
-        chmod +x ~/.local/bin/fortran_project
+        chmod +x "$PFX/fortran_project"
         exit
         ;;
     "docs")
