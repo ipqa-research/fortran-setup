@@ -91,6 +91,7 @@ clean:
 	rm obj/*
 
 all: dependencies
+	# Here OptimCMRKP2011.for would be the program file
 	$(FC) -o executable.exe ./app/OptimCMRKP2011.for obj/* -qmkl
 ```
 
