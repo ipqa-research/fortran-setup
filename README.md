@@ -61,3 +61,36 @@ script="$(curl https://raw.githubusercontent.com/ipqa-research/fortran-setup/mai
 echo "$script" > ~/.local/bin/fortran_project
 chmod +x ~/.local/bin/fortran_project
 ```
+
+### Working with our legacy (old) codes
+Sometimes our old codes are not compatible with the more modern setup. When this happens to run them it is needed
+to do a couple of things:
+
+- Setup a Makefile (called `Makefile`) that handles compilation.
+  It **must** be called `Makefile` and be included in the project's root directory.
+- Install the intel Fortran compiler (which can be done with the script provided in this repo)
+- Have installed the "Environment Configurator for Intel Software Developer Tools" vscode extension.
+  Which should be installed if you installed the recommendations on one of our Fortran projects (https://github.com/ipqa-research/vscode-fortran)
+
+```make
+#Makefile file
+FC=ifort -g -extend-source
+
+# Dependencies includes the list of files that should be used
+# (excluding the main program file).
+dependencies:
+	mkdir -p obj
+	$(FC) -c src/asa057.f90
+	$(FC) -c src/praxis.f
+	$(FC) -c src/Pure.for
+	$(FC) -c src/RKPR.for
+	$(FC) -c src/SRK_PR.for
+	mv *.o obj/
+
+clean:
+	rm obj/*
+
+all: dependencies
+	$(FC) -o executable.exe ./app/OptimCMRKP2011.for obj/* -qmkl
+```
+
