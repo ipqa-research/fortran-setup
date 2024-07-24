@@ -67,7 +67,8 @@ Sometimes our old codes are not compatible with the more modern setup. When this
 to do a couple of things:
 
 - Setup a Makefile (called `Makefile`) that handles compilation.
-  It **must** be called `Makefile` and be included in the project's root directory.
+  It **must** be called `Makefile` and be included in the project's root directory. You can create the empty Makefile and 
+  write `makeleg` and later press tab to autofill the file with a template.
 - Install the intel Fortran compiler (which can be done with the script provided in this repo)
 - Have installed the "Environment Configurator for Intel Software Developer Tools" vscode extension.
   Which should be installed if you installed the recommendations on one of our Fortran projects (https://github.com/ipqa-research/vscode-fortran)
