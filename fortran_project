@@ -22,7 +22,7 @@ update_script() {
     script="$(curl -s $MY_URL)"
     echo "$script" > "$tmpfile"
     chmod +x "$tmpfile"
-    exec mv "$tmpfile" "$PFX/fortran_project"
+    exec mv "$tmpfile" "$PFX/fortran_project" && echo "done."
 }
 
 write_gitignore() {

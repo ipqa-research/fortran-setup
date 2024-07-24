@@ -24,6 +24,7 @@ install_packages() {
     sudo apt update && sudo apt upgrade
 
     sudo apt install \
+        git \
         python3-pip python3-venv pipx \
         gfortran \
         libblas-dev liblapack-dev \
@@ -31,7 +32,7 @@ install_packages() {
         fzf
 
     # Install fortran language server, fprettify and flinter
-    packages=( fortls findent flinter ford fpm fypp )
+    packages=( fortls findent flinter ford fpm fypp fprettify )
     for package in ${packages[@]}; do
         pipx install $package --force
     done
